@@ -1,9 +1,10 @@
 "use client";
 
+import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export default function ClaimedPage() {
+function ClaimedPageContent() {
   const search = useSearchParams();
   const txHash = search.get("txHash") ?? "";
 
@@ -40,6 +41,14 @@ export default function ClaimedPage() {
         </Link>
       </div>
     </div>
+  );
+}
+
+export default function ClaimedPage() {
+  return (
+    <Suspense fallback={<div className="mx-auto max-w-[480px] px-5 py-10 text-center text-muted">Loading...</div>}>
+      <ClaimedPageContent />
+    </Suspense>
   );
 }
 

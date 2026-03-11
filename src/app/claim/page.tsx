@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useKeplr } from "@/hooks/useKeplr";
 import { executeClaimGift, parseContractError } from "@/utils/contract";
 import Link from "next/link";
 
-export default function ClaimPage() {
+function ClaimPageContent() {
   const search = useSearchParams();
   const initialCode = search.get("claim") ?? "";
   const initialGiftId = search.get("giftId") ?? "";
@@ -172,6 +172,24 @@ export default function ClaimPage() {
           . Then come back to paste your new address.
         </p>
       </div>
+    </div>
+  );
+}
+
+export default function ClaimPage() {
+  return (
+    <Suspense fallback={<ClaimPageFallback />}>
+      <ClaimPageContent />
+    </Suspense>
+  );
+}
+
+function ClaimPageFallback() {
+  return (
+    <div className="mx-auto max-w-[440px] px-5 py-10 text-center">
+      <div className="mb-3 text-[48px]">🎁</div>
+      <h1 className="font-serif text-[32px] font-extrabold">Claim Your Gift</h1>
+      <p className="mt-2 text-sm text-muted">Loading...</p>
     </div>
   );
 }

@@ -2,11 +2,11 @@
 
 import GiftCard from "@/components/GiftCard";
 import { useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
 const COPIED_DURATION_MS = 2500;
 
-export default function SuccessPage() {
+function SuccessPageContent() {
   const search = useSearchParams();
   const [copiedCode, setCopiedCode] = useState(false);
   const [copiedLink, setCopiedLink] = useState(false);
@@ -166,6 +166,14 @@ export default function SuccessPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function SuccessPage() {
+  return (
+    <Suspense fallback={<div className="mx-auto max-w-[500px] px-5 py-10 text-center text-muted">Loading...</div>}>
+      <SuccessPageContent />
+    </Suspense>
   );
 }
 
