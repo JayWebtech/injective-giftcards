@@ -40,4 +40,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# contracts/gift-escrow: target and artifacts are tracked (not ignored)
+# Rust/Cargo build output (keep repo small; use cargo wasm to rebuild)
+contracts/gift-escrow/target/
