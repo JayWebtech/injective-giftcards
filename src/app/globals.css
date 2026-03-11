@@ -1,26 +1,149 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-dm-sans),
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  --font-serif: var(--font-instrument-serif),
+    "Georgia",
+    "Times New Roman",
+    serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 }
 
 body {
-  background: var(--background);
+  background: #000000;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+}
+
+.glass-surface {
+  @apply rounded-2xl border border-neutral-800 bg-neutral-900;
+}
+
+.primary-gradient {
+  background-color: #ffffff;
+}
+
+.primary-gradient-border {
+  border-color: #ffffff;
+}
+
+.text-muted {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.adinkra-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.12' stroke-width='2'%3E%3Cpath d='M20 40c10-20 30-20 40 0s30 20 40 0 30-20 40 0'/%3E%3Cpath d='M20 120c10-20 30-20 40 0s30 20 40 0 30-20 40 0'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: cover;
+  opacity: 0.12;
+}
+
+.card-pattern-kente {
+  background-image:
+    repeating-linear-gradient(
+      135deg,
+      rgba(91, 44, 111, 0.7),
+      rgba(91, 44, 111, 0.7) 6px,
+      rgba(230, 126, 34, 0.7) 6px,
+      rgba(230, 126, 34, 0.7) 12px,
+      rgba(39, 174, 96, 0.7) 12px,
+      rgba(39, 174, 96, 0.7) 18px
+    );
+  background-size: 32px 32px;
+}
+
+.card-pattern-sunset {
+  background-image:
+    linear-gradient(
+      120deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(76, 29, 149, 0.6),
+      rgba(248, 171, 120, 0.4)
+    ),
+    radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.16) 0, transparent 55%),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(248, 250, 252, 0.16),
+      rgba(248, 250, 252, 0.16) 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  background-size: cover, 60% 60%, 18px 18px;
+}
+
+.card-pattern-forest {
+  background-image:
+    radial-gradient(circle at 0 0, rgba(149, 213, 178, 0.5) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(64, 145, 108, 0.6) 0, transparent 55%),
+    repeating-linear-gradient(
+      135deg,
+      rgba(27, 67, 50, 0.4),
+      rgba(27, 67, 50, 0.4) 3px,
+      transparent 3px,
+      transparent 10px
+    );
+  background-size: 60% 60%, 60% 60%, 20px 20px;
+}
+
+.card-pattern-ocean {
+  background-image:
+    radial-gradient(circle at 20% 0, rgba(148, 163, 184, 0.35) 0, transparent 55%),
+    linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.95),
+      rgba(15, 23, 42, 0.7),
+      rgba(3, 105, 161, 0.55)
+    ),
+    repeating-linear-gradient(
+      135deg,
+      rgba(56, 189, 248, 0.18),
+      rgba(56, 189, 248, 0.18) 1.5px,
+      transparent 2px,
+      transparent 9px
+    );
+  background-size: 70% 70%, cover, 20px 20px;
+}
+
+.card-pattern-midnight {
+  background-image:
+    radial-gradient(circle at 10% 0, rgba(225, 29, 72, 0.55) 0, transparent 55%),
+    radial-gradient(circle at 80% 110%, rgba(76, 29, 149, 0.7) 0, transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(15, 23, 42, 0.7),
+      rgba(15, 23, 42, 0.7) 1px,
+      transparent 1px,
+      transparent 6px
+    );
+  background-size: 60% 60%, 70% 70%, 14px 14px;
+}
+
+.card-pattern-aurora {
+  background-image:
+    radial-gradient(circle at 0 0, rgba(56, 189, 248, 0.45) 0, transparent 55%),
+    radial-gradient(circle at 100% 100%, rgba(34, 197, 94, 0.45) 0, transparent 55%),
+    repeating-linear-gradient(
+      120deg,
+      rgba(15, 23, 42, 0.8),
+      rgba(15, 23, 42, 0.8) 3px,
+      transparent 3px,
+      transparent 10px
+    );
+  background-size: 60% 60%, 60% 60%, 26px 26px;
+}
+
+button {
+  cursor: pointer;
 }
